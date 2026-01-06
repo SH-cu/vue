@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>component 2-1</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <div id="components-demo">
+            <button-counter></button-counter>
+        </div>
+        <style>
+            .demo{
+                font-family: sans-serif;
+                border: 1px solid #eee;
+                border-radius: 2px;
+                padding: 20px 30px;
+                margin-top: 1em;
+                margin-bottom: 40px;
+                user-select: none;
+                overflow: auto;
+            }
+        </style>
+        <script>
+            const app = Vue.createApp({})
+
+            app.component('button-counter',{
+                data(){
+                    return {
+                        count: 0
+                    }
+                },
+                template:`
+                    <button v-on:click="count++">
+                        count {{count}}
+                    </button>`
+            })
+
+            app.mount('#components-demo')
+        </script>
+    </body>
+</html>
