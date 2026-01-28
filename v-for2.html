@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-for</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+<body>
+    <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+    <div id="app" class="container">
+        <p>{{message}}</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>mail</th>
+                    <th>tel</th>
+                </tr>
+            </thead>
+            <tr v-for="(item, index) in items">
+                <td>{{ index }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.mail }}</td>
+                <td>{{ item.tel }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const appdata = {
+            data() {
+                return {
+                    message:'※データをテーブル表示する',
+                    items:[]
+                }
+            },
+            mounted() {
+                //バックエンドのエンドポイントを適切なものに変更してください
+                const backendEndpoint = 'http://localhost:30083/notes_from_b';
+
+                // Axiosを使用してデータを取得
+                axios.get(backendEndpoint)
+                    .the(response => {
+                        this.items = response.data;// データを取得してitemsにセット
+                        console.log(this.items)
+                    })
+                    .catch(error => {
+                        console.error('データの取得に失敗しました', error);
+                    });
+            }
+        }
+
+        let app = Vue.createApp(appdata)
+        app.mount('#app')
+    </script>
+</body>
+</html>
