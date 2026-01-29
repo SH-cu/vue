@@ -4,7 +4,7 @@
     <title>v-for</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
@@ -38,7 +38,7 @@
             },
             mounted() {
                 //バックエンドのエンドポイントを適切なものに変更してください
-                const backendEndpoint = '153.120.121.157:30083';
+                const backendEndpoint = 'http://localhost:30083/notes_from_b';
 
                 // Axiosを使用してデータを取得
                 axios.get(backendEndpoint)
@@ -52,8 +52,7 @@
             }
         }
 
-        let app = Vue.createApp(appdata)
-        app.mount('#app')
+        Vue.createApp(appdata).mount('#app');
     </script>
 </body>
 </html>
