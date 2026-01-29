@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>v-for</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
@@ -19,7 +20,7 @@
                     <th>tel</th>
                 </tr>
             </thead>
-            <tr v-for="(item, index) in items">
+            <tr v-for="(item, index) in items" :key="item.name">
                 <td>{{ index }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.mail }}</td>
@@ -42,7 +43,7 @@
 
                 // Axiosを使用してデータを取得
                 axios.get(backendEndpoint)
-                    .the(response => {
+                    .then(response => {
                         this.items = response.data;// データを取得してitemsにセット
                         console.log(this.items)
                     })
