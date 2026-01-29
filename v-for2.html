@@ -14,14 +14,12 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>mail</th>
                     <th>tel</th>
                 </tr>
             </thead>
             <tr v-for="(item, index) in items" :key="item.name">
-                <td>{{ index }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.mail }}</td>
                 <td>{{ item.tel }}</td>
